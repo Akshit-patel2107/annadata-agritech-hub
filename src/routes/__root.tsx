@@ -81,14 +81,18 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       {
         name: "description",
         content:
-          "From Farm to Future, Powered by Data. अन्नData is India's premium agritech platform connecting farmers, buyers, warehouses, logistics and financial partners.",
+          "India's premium agritech platform. Farm to Future, powered by data. Early access open for farmers, buyers, warehouses, transporters and partners.",
       },
       { name: "author", content: "अन्नData" },
       { name: "theme-color", content: "#1f3a1f" },
       { property: "og:title", content: "अन्नData — Organizing India's Agricultural Future" },
-      { property: "og:description", content: "From Farm to Future, Powered by Data." },
+      { property: "og:description", content: "India's premium agritech platform. Farm to Future, powered by data. Early access open for farmers, buyers, warehouses, transporters and partners." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "अन्नData — Organizing India's Agricultural Future" },
+      { name: "twitter:description", content: "India's premium agritech platform. Farm to Future, powered by data. Early access open for farmers, buyers, warehouses, transporters and partners." },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/b5498092-bb2f-4790-9336-587ed4530643/id-preview-1b1f73b2--e1a2399d-2c3f-4c88-a0b0-2c85a231230e.lovable.app-1784816507347.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/b5498092-bb2f-4790-9336-587ed4530643/id-preview-1b1f73b2--e1a2399d-2c3f-4c88-a0b0-2c85a231230e.lovable.app-1784816507347.png" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },

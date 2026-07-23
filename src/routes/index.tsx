@@ -32,10 +32,10 @@ export const Route = createFileRoute("/")({
         content:
           "India's premium agritech platform. Farm to Future, powered by data. Early access open for farmers, buyers, warehouses, transporters and partners.",
       },
-      { property: "og:title", content: "अन्नData — From Farm to Future, Powered by Data" },
+      { property: "og:title", content: "अन्नData — Organizing India's Agricultural Future" },
       {
         property: "og:description",
-        content: "Building India's Largest Agricultural Network. Early access open.",
+        content: "India's premium agritech platform. Farm to Future, powered by data. Early access open for farmers, buyers, warehouses, transporters and partners.",
       },
     ],
   }),
