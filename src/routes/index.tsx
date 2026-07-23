@@ -1,5 +1,6 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { Logo } from "@/components/Logo";
+
 import heroFarm from "@/assets/hero-farm.jpg";
 import farmerPortrait from "@/assets/farmer-portrait.jpg";
 import commodities from "@/assets/commodities.jpg";
@@ -98,23 +99,25 @@ function Nav() {
           <a href="#top" className="flex min-w-0 items-center gap-2">
             <Logo size="sm" />
           </a>
-          <nav className="hidden items-center gap-7 text-sm font-medium md:flex">
-            <a href="#platform" className="hover:text-[color:var(--forest)] transition">Platform</a>
-            <a href="#market" className="hover:text-[color:var(--forest)] transition">Marketplace</a>
-            <a href="#manifesto" className="hover:text-[color:var(--forest)] transition">Manifesto</a>
-            <a href="#access" className="hover:text-[color:var(--forest)] transition">Early Access</a>
+          <nav className="hidden items-center gap-6 text-sm font-medium md:flex">
+            <Link to="/dashboard" className="hover:text-[color:var(--forest)] transition">Dashboard</Link>
+            <Link to="/marketplace" className="hover:text-[color:var(--forest)] transition">Marketplace</Link>
+            <Link to="/prices" className="hover:text-[color:var(--forest)] transition">Prices</Link>
+            <Link to="/weather" className="hover:text-[color:var(--forest)] transition">Weather</Link>
+            <Link to="/advisory" className="hover:text-[color:var(--forest)] transition">AI Advisory</Link>
           </nav>
-          <a
-            href="#access"
+          <Link
+            to="/dashboard"
             className="inline-flex shrink-0 items-center gap-1.5 rounded-full bg-[color:var(--charcoal)] px-4 py-2 text-sm font-semibold text-[color:var(--cream)] transition hover:bg-[color:var(--forest)]"
           >
-            Get Early Access <ArrowUpRight className="size-4" />
-          </a>
+            Enter Demo <ArrowUpRight className="size-4" />
+          </Link>
         </div>
       </div>
     </header>
   );
 }
+
 
 function Hero() {
   return (
@@ -171,19 +174,20 @@ function Hero() {
         </p>
 
         <div className="animate-rise mt-10 flex flex-wrap gap-3" style={{ animationDelay: "0.4s" }}>
-          <a
-            href="#access"
+          <Link
+            to="/dashboard"
             className="group inline-flex items-center gap-2 rounded-full bg-[color:var(--forest)] px-6 py-3.5 text-base font-semibold text-[color:var(--cream)] transition hover:bg-[color:var(--charcoal)]"
           >
-            Join Early Access <ArrowUpRight className="size-4 transition group-hover:rotate-45" />
-          </a>
-          <a
-            href="#platform"
+            Enter the Demo <ArrowUpRight className="size-4 transition group-hover:rotate-45" />
+          </Link>
+          <Link
+            to="/marketplace"
             className="inline-flex items-center gap-2 rounded-full border-2 border-[color:var(--charcoal)] bg-transparent px-6 py-3.5 text-base font-semibold text-[color:var(--charcoal)] transition hover:bg-[color:var(--charcoal)] hover:text-[color:var(--cream)]"
           >
-            See the Platform
-          </a>
+            Browse Marketplace
+          </Link>
         </div>
+
 
         {/* Floating farmer card */}
         <div className="animate-float pointer-events-none absolute right-4 top-24 hidden w-56 rotate-3 overflow-hidden rounded-2xl border-4 border-[color:var(--charcoal)] shadow-2xl md:block lg:right-16 lg:w-72">
@@ -223,9 +227,9 @@ function RolesSection() {
       <SectionHeader kicker="For everyone in the chain" title="Built for every hand that feeds India" hindi="सबके लिए" />
       <div className="mt-12 grid grid-cols-2 gap-4 md:grid-cols-5">
         {roles.map((r) => (
-          <a
+          <Link
             key={r.label}
-            href="#access"
+            to="/dashboard"
             className="group relative overflow-hidden rounded-2xl border-2 border-[color:var(--charcoal)] bg-[color:var(--cream)] p-5 transition hover:-translate-y-1 hover:shadow-[8px_8px_0_0_var(--charcoal)]"
           >
             <div
@@ -241,8 +245,9 @@ function RolesSection() {
               {r.label}
             </div>
             <ArrowUpRight className="absolute right-4 top-4 size-5 opacity-40 transition group-hover:opacity-100 group-hover:rotate-12" />
-          </a>
+          </Link>
         ))}
+
       </div>
     </section>
   );
@@ -395,55 +400,36 @@ function CTASection() {
           aria-hidden
           className="pointer-events-none absolute -right-8 -top-8 select-none font-[family-name:var(--font-devanagari)] text-[20vw] leading-none text-[color:var(--forest)]/30"
         >
-          जुड़ो
+          चलो
         </div>
         <div className="relative grid gap-10 lg:grid-cols-[1.2fr_1fr] lg:items-center">
           <div>
             <h2 className="font-[family-name:var(--font-display)] text-4xl font-extrabold leading-tight text-[color:var(--cream)] md:text-6xl">
-              Get on the <span className="text-layered">list.</span>
+              Try the <span className="text-layered">whole platform.</span>
               <br />
-              Shape what we build.
+              No sign-up needed.
             </h2>
             <p className="mt-4 max-w-md text-[color:var(--cream)]/70">
-              Early access is opening in waves — farmers, buyers, warehouses, transporters, financial partners, investors.
-              Tell us who you are.
+              Explore the farmer dashboard, browse the marketplace, book warehouses and transport, scan a leaf, ask the AI advisor — every workflow live in demo mode.
             </p>
           </div>
-          <form
-            onSubmit={(e) => e.preventDefault()}
-            className="glass-dark rounded-2xl p-5 space-y-3"
-          >
-            <label className="block text-xs font-semibold uppercase tracking-widest text-[color:var(--mustard)]">I am a</label>
-            <select
-              className="w-full rounded-xl border border-[color:var(--cream)]/20 bg-[color:var(--charcoal)] px-4 py-3 text-[color:var(--cream)] focus:border-[color:var(--mustard)] focus:outline-none"
-              defaultValue=""
-            >
-              <option value="" disabled>Choose your role</option>
-              {roles.map((r) => <option key={r.label}>{r.label}</option>)}
-              <option>Transporter</option>
-              <option>Warehouse Operator</option>
-              <option>Financial Partner</option>
-            </select>
-            <input
-              type="tel"
-              placeholder="Mobile number (OTP based sign-in)"
-              className="w-full rounded-xl border border-[color:var(--cream)]/20 bg-[color:var(--charcoal)] px-4 py-3 text-[color:var(--cream)] placeholder:text-[color:var(--cream)]/40 focus:border-[color:var(--mustard)] focus:outline-none"
-            />
-            <button
-              type="submit"
-              className="w-full rounded-xl bg-[color:var(--mustard)] px-4 py-3.5 font-[family-name:var(--font-display)] text-lg font-extrabold text-[color:var(--charcoal)] transition hover:bg-[color:var(--orange-deep)] hover:text-[color:var(--cream)]"
-            >
-              Request Early Access →
-            </button>
-            <p className="text-xs text-[color:var(--cream)]/50">
-              OTP auth arrives with dashboards. This form saves your interest.
-            </p>
-          </form>
+          <div className="glass-dark rounded-2xl p-5 space-y-3">
+            <Link to="/dashboard" className="block w-full rounded-xl bg-[color:var(--mustard)] px-4 py-4 text-center font-[family-name:var(--font-display)] text-lg font-extrabold text-[color:var(--charcoal)] transition hover:bg-[color:var(--orange-deep)] hover:text-[color:var(--cream)]">
+              Open Farmer Dashboard →
+            </Link>
+            <Link to="/marketplace" className="block w-full rounded-xl border-2 border-[color:var(--cream)]/30 px-4 py-3 text-center font-semibold text-[color:var(--cream)] transition hover:bg-[color:var(--cream)]/10">
+              Browse Marketplace
+            </Link>
+            <Link to="/disease" className="block w-full rounded-xl border-2 border-[color:var(--cream)]/30 px-4 py-3 text-center font-semibold text-[color:var(--cream)] transition hover:bg-[color:var(--cream)]/10">
+              Scan a Leaf (AI)
+            </Link>
+          </div>
         </div>
       </div>
     </section>
   );
 }
+
 
 function Footer() {
   return (

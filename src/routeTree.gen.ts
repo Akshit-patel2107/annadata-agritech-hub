@@ -9,38 +9,214 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as WeatherRouteImport } from './routes/weather'
+import { Route as WarehouseRouteImport } from './routes/warehouse'
+import { Route as SellRouteImport } from './routes/sell'
+import { Route as PricesRouteImport } from './routes/prices'
+import { Route as MarketplaceRouteImport } from './routes/marketplace'
+import { Route as DiseaseRouteImport } from './routes/disease'
+import { Route as DashboardRouteImport } from './routes/dashboard'
+import { Route as AdvisoryRouteImport } from './routes/advisory'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as MarketplaceIdRouteImport } from './routes/marketplace.$id'
 
+const WeatherRoute = WeatherRouteImport.update({
+  id: '/weather',
+  path: '/weather',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const WarehouseRoute = WarehouseRouteImport.update({
+  id: '/warehouse',
+  path: '/warehouse',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SellRoute = SellRouteImport.update({
+  id: '/sell',
+  path: '/sell',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PricesRoute = PricesRouteImport.update({
+  id: '/prices',
+  path: '/prices',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MarketplaceRoute = MarketplaceRouteImport.update({
+  id: '/marketplace',
+  path: '/marketplace',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DiseaseRoute = DiseaseRouteImport.update({
+  id: '/disease',
+  path: '/disease',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DashboardRoute = DashboardRouteImport.update({
+  id: '/dashboard',
+  path: '/dashboard',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdvisoryRoute = AdvisoryRouteImport.update({
+  id: '/advisory',
+  path: '/advisory',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const MarketplaceIdRoute = MarketplaceIdRouteImport.update({
+  id: '/$id',
+  path: '/$id',
+  getParentRoute: () => MarketplaceRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/advisory': typeof AdvisoryRoute
+  '/dashboard': typeof DashboardRoute
+  '/disease': typeof DiseaseRoute
+  '/marketplace': typeof MarketplaceRouteWithChildren
+  '/prices': typeof PricesRoute
+  '/sell': typeof SellRoute
+  '/warehouse': typeof WarehouseRoute
+  '/weather': typeof WeatherRoute
+  '/marketplace/$id': typeof MarketplaceIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/advisory': typeof AdvisoryRoute
+  '/dashboard': typeof DashboardRoute
+  '/disease': typeof DiseaseRoute
+  '/marketplace': typeof MarketplaceRouteWithChildren
+  '/prices': typeof PricesRoute
+  '/sell': typeof SellRoute
+  '/warehouse': typeof WarehouseRoute
+  '/weather': typeof WeatherRoute
+  '/marketplace/$id': typeof MarketplaceIdRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/advisory': typeof AdvisoryRoute
+  '/dashboard': typeof DashboardRoute
+  '/disease': typeof DiseaseRoute
+  '/marketplace': typeof MarketplaceRouteWithChildren
+  '/prices': typeof PricesRoute
+  '/sell': typeof SellRoute
+  '/warehouse': typeof WarehouseRoute
+  '/weather': typeof WeatherRoute
+  '/marketplace/$id': typeof MarketplaceIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/advisory'
+    | '/dashboard'
+    | '/disease'
+    | '/marketplace'
+    | '/prices'
+    | '/sell'
+    | '/warehouse'
+    | '/weather'
+    | '/marketplace/$id'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/advisory'
+    | '/dashboard'
+    | '/disease'
+    | '/marketplace'
+    | '/prices'
+    | '/sell'
+    | '/warehouse'
+    | '/weather'
+    | '/marketplace/$id'
+  id:
+    | '__root__'
+    | '/'
+    | '/advisory'
+    | '/dashboard'
+    | '/disease'
+    | '/marketplace'
+    | '/prices'
+    | '/sell'
+    | '/warehouse'
+    | '/weather'
+    | '/marketplace/$id'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AdvisoryRoute: typeof AdvisoryRoute
+  DashboardRoute: typeof DashboardRoute
+  DiseaseRoute: typeof DiseaseRoute
+  MarketplaceRoute: typeof MarketplaceRouteWithChildren
+  PricesRoute: typeof PricesRoute
+  SellRoute: typeof SellRoute
+  WarehouseRoute: typeof WarehouseRoute
+  WeatherRoute: typeof WeatherRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/weather': {
+      id: '/weather'
+      path: '/weather'
+      fullPath: '/weather'
+      preLoaderRoute: typeof WeatherRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/warehouse': {
+      id: '/warehouse'
+      path: '/warehouse'
+      fullPath: '/warehouse'
+      preLoaderRoute: typeof WarehouseRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sell': {
+      id: '/sell'
+      path: '/sell'
+      fullPath: '/sell'
+      preLoaderRoute: typeof SellRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/prices': {
+      id: '/prices'
+      path: '/prices'
+      fullPath: '/prices'
+      preLoaderRoute: typeof PricesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/marketplace': {
+      id: '/marketplace'
+      path: '/marketplace'
+      fullPath: '/marketplace'
+      preLoaderRoute: typeof MarketplaceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/disease': {
+      id: '/disease'
+      path: '/disease'
+      fullPath: '/disease'
+      preLoaderRoute: typeof DiseaseRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/dashboard': {
+      id: '/dashboard'
+      path: '/dashboard'
+      fullPath: '/dashboard'
+      preLoaderRoute: typeof DashboardRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/advisory': {
+      id: '/advisory'
+      path: '/advisory'
+      fullPath: '/advisory'
+      preLoaderRoute: typeof AdvisoryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -48,11 +224,38 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/marketplace/$id': {
+      id: '/marketplace/$id'
+      path: '/$id'
+      fullPath: '/marketplace/$id'
+      preLoaderRoute: typeof MarketplaceIdRouteImport
+      parentRoute: typeof MarketplaceRoute
+    }
   }
 }
 
+interface MarketplaceRouteChildren {
+  MarketplaceIdRoute: typeof MarketplaceIdRoute
+}
+
+const MarketplaceRouteChildren: MarketplaceRouteChildren = {
+  MarketplaceIdRoute: MarketplaceIdRoute,
+}
+
+const MarketplaceRouteWithChildren = MarketplaceRoute._addFileChildren(
+  MarketplaceRouteChildren,
+)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AdvisoryRoute: AdvisoryRoute,
+  DashboardRoute: DashboardRoute,
+  DiseaseRoute: DiseaseRoute,
+  MarketplaceRoute: MarketplaceRouteWithChildren,
+  PricesRoute: PricesRoute,
+  SellRoute: SellRoute,
+  WarehouseRoute: WarehouseRoute,
+  WeatherRoute: WeatherRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
