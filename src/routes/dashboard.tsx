@@ -53,7 +53,7 @@ function Dashboard() {
           <Link to="/weather" className="group relative overflow-hidden rounded-3xl border-2 border-[color:var(--charcoal)] bg-gradient-to-br from-[color:var(--turquoise)]/25 to-[color:var(--cream)] p-6 transition hover:shadow-[8px_8px_0_0_var(--charcoal)]">
             <div className="flex items-start justify-between">
               <div>
-                <div className="text-xs font-bold uppercase tracking-widest text-[color:var(--charcoal)]/60">Sehore, MP · Now</div>
+                <div className="text-xs font-bold uppercase tracking-widest text-[color:var(--charcoal)]/60">{place} · Now</div>
                 <div className="mt-2 font-[family-name:var(--font-display)] text-5xl font-extrabold">{today.temp}°</div>
                 <div className="mt-1 text-sm font-semibold">{today.cond} · rain {today.rain}%</div>
               </div>

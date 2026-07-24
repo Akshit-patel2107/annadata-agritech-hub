@@ -1,7 +1,8 @@
 import { Link, useRouterState } from "@tanstack/react-router";
 import { Logo } from "@/components/Logo";
-import { Menu, X } from "lucide-react";
+import { Menu, X, User } from "lucide-react";
 import { useState, type ReactNode } from "react";
+import { useProfile } from "@/lib/profile";
 
 const nav = [
   { to: "/dashboard", label: "Dashboard", hindi: "डैशबोर्ड" },
