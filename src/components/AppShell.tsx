@@ -20,6 +20,8 @@ const nav = [
 export function AppShell({ children }: { children: ReactNode }) {
   const [open, setOpen] = useState(false);
   const pathname = useRouterState({ select: (s) => s.location.pathname });
+  const { profile } = useProfile();
+  const firstName = profile?.name?.split(" ")[0];
 
   return (
     <div className="min-h-screen bg-[color:var(--cream)] text-[color:var(--charcoal)]">
@@ -48,6 +50,18 @@ export function AppShell({ children }: { children: ReactNode }) {
               })}
             </nav>
             <div className="flex items-center gap-2">
+              {profile ? (
+                <Link to="/auth" className="hidden sm:inline-flex items-center gap-1.5 rounded-full border-2 border-[color:var(--charcoal)] px-3 py-1.5 text-sm font-semibold hover:bg-[color:var(--charcoal)] hover:text-[color:var(--cream)]">
+                  <span className="grid size-5 place-items-center rounded-full bg-[color:var(--forest)] text-[10px] font-bold text-[color:var(--cream)]">
+                    {firstName?.[0]?.toUpperCase() ?? "U"}
+                  </span>
+                  {firstName}
+                </Link>
+              ) : (
+                <Link to="/auth" className="hidden sm:inline-flex items-center gap-1.5 rounded-full border-2 border-[color:var(--charcoal)] px-3 py-1.5 text-sm font-semibold hover:bg-[color:var(--charcoal)] hover:text-[color:var(--cream)]">
+                  <User className="size-4" /> Sign in
+                </Link>
+              )}
               <Link
                 to="/sell"
                 className="hidden sm:inline-flex items-center gap-1.5 rounded-full bg-[color:var(--forest)] px-4 py-2 text-sm font-semibold text-[color:var(--cream)] transition hover:bg-[color:var(--charcoal)]"
