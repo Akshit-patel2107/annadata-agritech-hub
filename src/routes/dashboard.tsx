@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { AppShell, PageHeader } from "@/components/AppShell";
 import { listings, mandiSnapshot, weather7Day } from "@/lib/mock-data";
+import { useProfile } from "@/lib/profile";
 import {
   Sprout, TrendingUp, TrendingDown, Cloud, Sun, CloudRain, Zap,
   ArrowUpRight, ScanLine, Brain, Warehouse, Truck, Wallet, Package, IndianRupee,
@@ -21,6 +22,9 @@ export const Route = createFileRoute("/dashboard")({
 const icons = { sun: Sun, cloud: Cloud, rain: CloudRain, storm: Zap } as const;
 
 function Dashboard() {
+  const { profile } = useProfile();
+  const firstName = profile?.name?.split(" ")[0] ?? "farmer";
+  const place = profile ? `${profile.village || "your village"}, ${profile.state}` : "Sehore, MP";
   const myListings = listings.slice(0, 3);
   const today = weather7Day[0];
   const TodayIcon = icons[today.icon as keyof typeof icons];
@@ -29,11 +33,12 @@ function Dashboard() {
     <AppShell>
       <main className="mx-auto max-w-7xl px-5 py-10 md:py-14">
         <PageHeader
-          kicker="Namaste, Ramesh"
+          kicker={`Namaste, ${firstName}`}
           title={<>Your farm, <span className="text-layered">on tap.</span></>}
           hindi="स्वागत"
-          desc="Everything you need to grow, price, store, move and sell — organized around you."
+          desc={profile ? `Signed in as ${profile.name} · ${place}. Everything organized around you.` : "Everything you need to grow, price, store, move and sell — organized around you."}
         />
+
 
         {/* Stat strip */}
         <div className="mb-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
@@ -48,7 +53,7 @@ function Dashboard() {
           <Link to="/weather" className="group relative overflow-hidden rounded-3xl border-2 border-[color:var(--charcoal)] bg-gradient-to-br from-[color:var(--turquoise)]/25 to-[color:var(--cream)] p-6 transition hover:shadow-[8px_8px_0_0_var(--charcoal)]">
             <div className="flex items-start justify-between">
               <div>
-                <div className="text-xs font-bold uppercase tracking-widest text-[color:var(--charcoal)]/60">Sehore, MP · Now</div>
+                <div className="text-xs font-bold uppercase tracking-widest text-[color:var(--charcoal)]/60">{place} · Now</div>
                 <div className="mt-2 font-[family-name:var(--font-display)] text-5xl font-extrabold">{today.temp}°</div>
                 <div className="mt-1 text-sm font-semibold">{today.cond} · rain {today.rain}%</div>
               </div>
