@@ -11,9 +11,12 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as WeatherRouteImport } from './routes/weather'
 import { Route as WarehouseRouteImport } from './routes/warehouse'
+import { Route as SuppliesRouteImport } from './routes/supplies'
+import { Route as SellToUsRouteImport } from './routes/sell-to-us'
 import { Route as SellRouteImport } from './routes/sell'
 import { Route as PricesRouteImport } from './routes/prices'
 import { Route as MarketplaceRouteImport } from './routes/marketplace'
+import { Route as LoansRouteImport } from './routes/loans'
 import { Route as DiseaseRouteImport } from './routes/disease'
 import { Route as DashboardRouteImport } from './routes/dashboard'
 import { Route as AdvisoryRouteImport } from './routes/advisory'
@@ -30,6 +33,16 @@ const WarehouseRoute = WarehouseRouteImport.update({
   path: '/warehouse',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SuppliesRoute = SuppliesRouteImport.update({
+  id: '/supplies',
+  path: '/supplies',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SellToUsRoute = SellToUsRouteImport.update({
+  id: '/sell-to-us',
+  path: '/sell-to-us',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const SellRoute = SellRouteImport.update({
   id: '/sell',
   path: '/sell',
@@ -43,6 +56,11 @@ const PricesRoute = PricesRouteImport.update({
 const MarketplaceRoute = MarketplaceRouteImport.update({
   id: '/marketplace',
   path: '/marketplace',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LoansRoute = LoansRouteImport.update({
+  id: '/loans',
+  path: '/loans',
   getParentRoute: () => rootRouteImport,
 } as any)
 const DiseaseRoute = DiseaseRouteImport.update({
@@ -76,9 +94,12 @@ export interface FileRoutesByFullPath {
   '/advisory': typeof AdvisoryRoute
   '/dashboard': typeof DashboardRoute
   '/disease': typeof DiseaseRoute
+  '/loans': typeof LoansRoute
   '/marketplace': typeof MarketplaceRouteWithChildren
   '/prices': typeof PricesRoute
   '/sell': typeof SellRoute
+  '/sell-to-us': typeof SellToUsRoute
+  '/supplies': typeof SuppliesRoute
   '/warehouse': typeof WarehouseRoute
   '/weather': typeof WeatherRoute
   '/marketplace/$id': typeof MarketplaceIdRoute
@@ -88,9 +109,12 @@ export interface FileRoutesByTo {
   '/advisory': typeof AdvisoryRoute
   '/dashboard': typeof DashboardRoute
   '/disease': typeof DiseaseRoute
+  '/loans': typeof LoansRoute
   '/marketplace': typeof MarketplaceRouteWithChildren
   '/prices': typeof PricesRoute
   '/sell': typeof SellRoute
+  '/sell-to-us': typeof SellToUsRoute
+  '/supplies': typeof SuppliesRoute
   '/warehouse': typeof WarehouseRoute
   '/weather': typeof WeatherRoute
   '/marketplace/$id': typeof MarketplaceIdRoute
@@ -101,9 +125,12 @@ export interface FileRoutesById {
   '/advisory': typeof AdvisoryRoute
   '/dashboard': typeof DashboardRoute
   '/disease': typeof DiseaseRoute
+  '/loans': typeof LoansRoute
   '/marketplace': typeof MarketplaceRouteWithChildren
   '/prices': typeof PricesRoute
   '/sell': typeof SellRoute
+  '/sell-to-us': typeof SellToUsRoute
+  '/supplies': typeof SuppliesRoute
   '/warehouse': typeof WarehouseRoute
   '/weather': typeof WeatherRoute
   '/marketplace/$id': typeof MarketplaceIdRoute
@@ -115,9 +142,12 @@ export interface FileRouteTypes {
     | '/advisory'
     | '/dashboard'
     | '/disease'
+    | '/loans'
     | '/marketplace'
     | '/prices'
     | '/sell'
+    | '/sell-to-us'
+    | '/supplies'
     | '/warehouse'
     | '/weather'
     | '/marketplace/$id'
@@ -127,9 +157,12 @@ export interface FileRouteTypes {
     | '/advisory'
     | '/dashboard'
     | '/disease'
+    | '/loans'
     | '/marketplace'
     | '/prices'
     | '/sell'
+    | '/sell-to-us'
+    | '/supplies'
     | '/warehouse'
     | '/weather'
     | '/marketplace/$id'
@@ -139,9 +172,12 @@ export interface FileRouteTypes {
     | '/advisory'
     | '/dashboard'
     | '/disease'
+    | '/loans'
     | '/marketplace'
     | '/prices'
     | '/sell'
+    | '/sell-to-us'
+    | '/supplies'
     | '/warehouse'
     | '/weather'
     | '/marketplace/$id'
@@ -152,9 +188,12 @@ export interface RootRouteChildren {
   AdvisoryRoute: typeof AdvisoryRoute
   DashboardRoute: typeof DashboardRoute
   DiseaseRoute: typeof DiseaseRoute
+  LoansRoute: typeof LoansRoute
   MarketplaceRoute: typeof MarketplaceRouteWithChildren
   PricesRoute: typeof PricesRoute
   SellRoute: typeof SellRoute
+  SellToUsRoute: typeof SellToUsRoute
+  SuppliesRoute: typeof SuppliesRoute
   WarehouseRoute: typeof WarehouseRoute
   WeatherRoute: typeof WeatherRoute
 }
@@ -173,6 +212,20 @@ declare module '@tanstack/react-router' {
       path: '/warehouse'
       fullPath: '/warehouse'
       preLoaderRoute: typeof WarehouseRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/supplies': {
+      id: '/supplies'
+      path: '/supplies'
+      fullPath: '/supplies'
+      preLoaderRoute: typeof SuppliesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sell-to-us': {
+      id: '/sell-to-us'
+      path: '/sell-to-us'
+      fullPath: '/sell-to-us'
+      preLoaderRoute: typeof SellToUsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/sell': {
@@ -194,6 +247,13 @@ declare module '@tanstack/react-router' {
       path: '/marketplace'
       fullPath: '/marketplace'
       preLoaderRoute: typeof MarketplaceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/loans': {
+      id: '/loans'
+      path: '/loans'
+      fullPath: '/loans'
+      preLoaderRoute: typeof LoansRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/disease': {
@@ -251,9 +311,12 @@ const rootRouteChildren: RootRouteChildren = {
   AdvisoryRoute: AdvisoryRoute,
   DashboardRoute: DashboardRoute,
   DiseaseRoute: DiseaseRoute,
+  LoansRoute: LoansRoute,
   MarketplaceRoute: MarketplaceRouteWithChildren,
   PricesRoute: PricesRoute,
   SellRoute: SellRoute,
+  SellToUsRoute: SellToUsRoute,
+  SuppliesRoute: SuppliesRoute,
   WarehouseRoute: WarehouseRoute,
   WeatherRoute: WeatherRoute,
 }

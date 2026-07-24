@@ -11,6 +11,9 @@ const nav = [
   { to: "/advisory", label: "AI Advisory", hindi: "सलाह" },
   { to: "/disease", label: "Disease Scan", hindi: "निदान" },
   { to: "/warehouse", label: "Warehouse", hindi: "गोदाम" },
+  { to: "/sell-to-us", label: "Sell to Us", hindi: "हमें बेचें" },
+  { to: "/supplies", label: "Seeds & Fertilizer", hindi: "बीज व खाद" },
+  { to: "/loans", label: "Loans & Schemes", hindi: "ऋण" },
 ] as const;
 
 export function AppShell({ children }: { children: ReactNode }) {
