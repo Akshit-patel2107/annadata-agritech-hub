@@ -19,6 +19,7 @@ import { Route as MarketplaceRouteImport } from './routes/marketplace'
 import { Route as LoansRouteImport } from './routes/loans'
 import { Route as DiseaseRouteImport } from './routes/disease'
 import { Route as DashboardRouteImport } from './routes/dashboard'
+import { Route as AuthRouteImport } from './routes/auth'
 import { Route as AdvisoryRouteImport } from './routes/advisory'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as MarketplaceIdRouteImport } from './routes/marketplace.$id'
@@ -73,6 +74,11 @@ const DashboardRoute = DashboardRouteImport.update({
   path: '/dashboard',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AuthRoute = AuthRouteImport.update({
+  id: '/auth',
+  path: '/auth',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AdvisoryRoute = AdvisoryRouteImport.update({
   id: '/advisory',
   path: '/advisory',
@@ -92,6 +98,7 @@ const MarketplaceIdRoute = MarketplaceIdRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/advisory': typeof AdvisoryRoute
+  '/auth': typeof AuthRoute
   '/dashboard': typeof DashboardRoute
   '/disease': typeof DiseaseRoute
   '/loans': typeof LoansRoute
@@ -107,6 +114,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/advisory': typeof AdvisoryRoute
+  '/auth': typeof AuthRoute
   '/dashboard': typeof DashboardRoute
   '/disease': typeof DiseaseRoute
   '/loans': typeof LoansRoute
@@ -123,6 +131,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/advisory': typeof AdvisoryRoute
+  '/auth': typeof AuthRoute
   '/dashboard': typeof DashboardRoute
   '/disease': typeof DiseaseRoute
   '/loans': typeof LoansRoute
@@ -140,6 +149,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/advisory'
+    | '/auth'
     | '/dashboard'
     | '/disease'
     | '/loans'
@@ -155,6 +165,7 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/advisory'
+    | '/auth'
     | '/dashboard'
     | '/disease'
     | '/loans'
@@ -170,6 +181,7 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/advisory'
+    | '/auth'
     | '/dashboard'
     | '/disease'
     | '/loans'
@@ -186,6 +198,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AdvisoryRoute: typeof AdvisoryRoute
+  AuthRoute: typeof AuthRoute
   DashboardRoute: typeof DashboardRoute
   DiseaseRoute: typeof DiseaseRoute
   LoansRoute: typeof LoansRoute
@@ -270,6 +283,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DashboardRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/auth': {
+      id: '/auth'
+      path: '/auth'
+      fullPath: '/auth'
+      preLoaderRoute: typeof AuthRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/advisory': {
       id: '/advisory'
       path: '/advisory'
@@ -309,6 +329,7 @@ const MarketplaceRouteWithChildren = MarketplaceRoute._addFileChildren(
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AdvisoryRoute: AdvisoryRoute,
+  AuthRoute: AuthRoute,
   DashboardRoute: DashboardRoute,
   DiseaseRoute: DiseaseRoute,
   LoansRoute: LoansRoute,
@@ -323,13 +344,3 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}

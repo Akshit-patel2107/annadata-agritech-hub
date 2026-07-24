@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { AppShell, PageHeader } from "@/components/AppShell";
 import { listings, mandiSnapshot, weather7Day } from "@/lib/mock-data";
+import { useProfile } from "@/lib/profile";
 import {
   Sprout, TrendingUp, TrendingDown, Cloud, Sun, CloudRain, Zap,
   ArrowUpRight, ScanLine, Brain, Warehouse, Truck, Wallet, Package, IndianRupee,
@@ -21,6 +22,9 @@ export const Route = createFileRoute("/dashboard")({
 const icons = { sun: Sun, cloud: Cloud, rain: CloudRain, storm: Zap } as const;
 
 function Dashboard() {
+  const { profile } = useProfile();
+  const firstName = profile?.name?.split(" ")[0] ?? "farmer";
+  const place = profile ? `${profile.village || "your village"}, ${profile.state}` : "Sehore, MP";
   const myListings = listings.slice(0, 3);
   const today = weather7Day[0];
   const TodayIcon = icons[today.icon as keyof typeof icons];
@@ -29,11 +33,12 @@ function Dashboard() {
     <AppShell>
       <main className="mx-auto max-w-7xl px-5 py-10 md:py-14">
         <PageHeader
-          kicker="Namaste, Ramesh"
+          kicker={`Namaste, ${firstName}`}
           title={<>Your farm, <span className="text-layered">on tap.</span></>}
           hindi="स्वागत"
-          desc="Everything you need to grow, price, store, move and sell — organized around you."
+          desc={profile ? `Signed in as ${profile.name} · ${place}. Everything organized around you.` : "Everything you need to grow, price, store, move and sell — organized around you."}
         />
+
 
         {/* Stat strip */}
         <div className="mb-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
