@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as WeatherRouteImport } from './routes/weather'
 import { Route as WarehouseRouteImport } from './routes/warehouse'
+import { Route as SellToUsRouteImport } from './routes/sell-to-us'
 import { Route as SellRouteImport } from './routes/sell'
 import { Route as PricesRouteImport } from './routes/prices'
 import { Route as MarketplaceRouteImport } from './routes/marketplace'
@@ -28,6 +29,11 @@ const WeatherRoute = WeatherRouteImport.update({
 const WarehouseRoute = WarehouseRouteImport.update({
   id: '/warehouse',
   path: '/warehouse',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SellToUsRoute = SellToUsRouteImport.update({
+  id: '/sell-to-us',
+  path: '/sell-to-us',
   getParentRoute: () => rootRouteImport,
 } as any)
 const SellRoute = SellRouteImport.update({
@@ -79,6 +85,7 @@ export interface FileRoutesByFullPath {
   '/marketplace': typeof MarketplaceRouteWithChildren
   '/prices': typeof PricesRoute
   '/sell': typeof SellRoute
+  '/sell-to-us': typeof SellToUsRoute
   '/warehouse': typeof WarehouseRoute
   '/weather': typeof WeatherRoute
   '/marketplace/$id': typeof MarketplaceIdRoute
@@ -91,6 +98,7 @@ export interface FileRoutesByTo {
   '/marketplace': typeof MarketplaceRouteWithChildren
   '/prices': typeof PricesRoute
   '/sell': typeof SellRoute
+  '/sell-to-us': typeof SellToUsRoute
   '/warehouse': typeof WarehouseRoute
   '/weather': typeof WeatherRoute
   '/marketplace/$id': typeof MarketplaceIdRoute
@@ -104,6 +112,7 @@ export interface FileRoutesById {
   '/marketplace': typeof MarketplaceRouteWithChildren
   '/prices': typeof PricesRoute
   '/sell': typeof SellRoute
+  '/sell-to-us': typeof SellToUsRoute
   '/warehouse': typeof WarehouseRoute
   '/weather': typeof WeatherRoute
   '/marketplace/$id': typeof MarketplaceIdRoute
@@ -118,6 +127,7 @@ export interface FileRouteTypes {
     | '/marketplace'
     | '/prices'
     | '/sell'
+    | '/sell-to-us'
     | '/warehouse'
     | '/weather'
     | '/marketplace/$id'
@@ -130,6 +140,7 @@ export interface FileRouteTypes {
     | '/marketplace'
     | '/prices'
     | '/sell'
+    | '/sell-to-us'
     | '/warehouse'
     | '/weather'
     | '/marketplace/$id'
@@ -142,6 +153,7 @@ export interface FileRouteTypes {
     | '/marketplace'
     | '/prices'
     | '/sell'
+    | '/sell-to-us'
     | '/warehouse'
     | '/weather'
     | '/marketplace/$id'
@@ -155,6 +167,7 @@ export interface RootRouteChildren {
   MarketplaceRoute: typeof MarketplaceRouteWithChildren
   PricesRoute: typeof PricesRoute
   SellRoute: typeof SellRoute
+  SellToUsRoute: typeof SellToUsRoute
   WarehouseRoute: typeof WarehouseRoute
   WeatherRoute: typeof WeatherRoute
 }
@@ -173,6 +186,13 @@ declare module '@tanstack/react-router' {
       path: '/warehouse'
       fullPath: '/warehouse'
       preLoaderRoute: typeof WarehouseRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sell-to-us': {
+      id: '/sell-to-us'
+      path: '/sell-to-us'
+      fullPath: '/sell-to-us'
+      preLoaderRoute: typeof SellToUsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/sell': {
@@ -254,6 +274,7 @@ const rootRouteChildren: RootRouteChildren = {
   MarketplaceRoute: MarketplaceRouteWithChildren,
   PricesRoute: PricesRoute,
   SellRoute: SellRoute,
+  SellToUsRoute: SellToUsRoute,
   WarehouseRoute: WarehouseRoute,
   WeatherRoute: WeatherRoute,
 }
