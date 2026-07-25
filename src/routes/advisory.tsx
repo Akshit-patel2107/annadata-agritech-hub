@@ -10,9 +10,9 @@ export const Route = createFileRoute("/advisory")({
   head: () => ({
     meta: [
       { title: "AI Crop Advisory · अन्नData" },
-      { name: "description", content: "Sowing, fertiliser, irrigation and pest guidance calibrated to your farm — powered by Lovable AI." },
+      { name: "description", content: "Sowing, fertiliser, irrigation and pest guidance calibrated to your farm — powered by अन्नData AI." },
       { property: "og:title", content: "AI Crop Advisory · अन्नData" },
-      { property: "og:description", content: "Sowing, fertiliser, irrigation and pest guidance — powered by Lovable AI." },
+      { property: "og:description", content: "Sowing, fertiliser, irrigation and pest guidance — powered by अन्नData AI." },
     ],
   }),
   component: Advisory,
@@ -94,7 +94,7 @@ function Advisory() {
           kicker="AI Advisory · Live"
           title={<>Ask your <span className="text-layered">agronomist.</span></>}
           hindi="सलाह"
-          desc="Powered by Lovable AI (Gemini) — trained on ICAR practices, IMD weather signals and Indian mandi realities."
+          desc="Powered by अन्नData AI — trained on ICAR practices, IMD weather signals and Indian mandi realities."
         />
 
         {!profile && (

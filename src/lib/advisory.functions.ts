@@ -21,9 +21,12 @@ const InputSchema = z.object({
 export const askAdvisor = createServerFn({ method: "POST" })
   .inputValidator((input: unknown) => InputSchema.parse(input))
   .handler(async ({ data }) => {
-    const key = process.env.LOVABLE_API_KEY;
+    const key = process.env.AI_API_KEY;
+    const baseUrl = process.env.AI_API_BASE_URL || "https://api.openai.com/v1";
+    const model = process.env.AI_MODEL || "gpt-4o-mini";
+
     if (!key) {
-      return { ok: false as const, error: "AI is not configured on this server yet." };
+      return { ok: false as const, error: "AI advisor is not configured. Set the AI_API_KEY environment variable." };
     }
 
     const p = data.profile;
@@ -40,20 +43,20 @@ If asked about pricing, storage, transport or buyers, mention that अन्नD
 Keep answers under 180 words unless the farmer asks for more detail.`;
 
     try {
-      const res = await fetch("https://ai.gateway.lovable.dev/v1/chat/completions", {
+      const res = await fetch(`${baseUrl}/chat/completions`, {
         method: "POST",
         headers: {
           "content-type": "application/json",
           Authorization: `Bearer ${key}`,
         },
         body: JSON.stringify({
-          model: "google/gemini-3.6-flash",
+          model,
           messages: [{ role: "system", content: system }, ...data.messages],
         }),
       });
 
       if (res.status === 429) return { ok: false as const, error: "Rate limit reached. Please try again in a moment." };
-      if (res.status === 402) return { ok: false as const, error: "AI credits exhausted. Please top up your Lovable AI credits." };
+      if (res.status === 402) return { ok: false as const, error: "AI credits exhausted. Please top up your AI credits." };
       if (!res.ok) {
         const t = await res.text().catch(() => "");
         return { ok: false as const, error: `AI error (${res.status}): ${t.slice(0, 200)}` };

@@ -1,10 +1,11 @@
-<!-- LOVABLE:BEGIN -->
-> [!IMPORTANT]
-> This project is connected to [Lovable](https://lovable.dev). Avoid rewriting
-> published git history — force pushing, or rebasing/amending/squashing commits
-> that are already pushed — as it rewrites history on Lovable's side and the
-> user will likely lose their project history.
->
-> Commits you push to the connected branch sync back to Lovable and show up in
-> the editor, so keep the branch in a working state.
-<!-- LOVABLE:END -->
+# Agent Instructions
+
+- This is a TanStack Start project with React, TypeScript and Tailwind CSS.
+- Keep routes in `src/routes/`.
+- Put reusable components in `src/components/`.
+- Put shared helpers in `src/lib/`.
+- Server-side logic uses `createServerFn` from `@tanstack/react-start`.
+- Public API endpoints live under `src/routes/api/public/`.
+- Do not commit secrets or API keys.
+- Follow existing code style and file naming conventions.
+- Update head metadata (title, description, og tags) on every new content route.
