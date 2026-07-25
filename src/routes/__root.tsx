@@ -93,8 +93,8 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: "अन्नData — Organizing India's Agricultural Future" },
       { name: "twitter:description", content: "India's premium agritech platform. Farm to Future, powered by data. Early access open for farmers, buyers, warehouses, transporters and partners." },
-      { property: "og:image", content: "https://anndata-agritech-hub.lovable.app/og-image.png" },
-      { name: "twitter:image", content: "https://anndata-agritech-hub.lovable.app/og-image.png" },
+      { property: "og:image", content: "https://anndata.ag/og-image.png" },
+      { name: "twitter:image", content: "https://anndata.ag/og-image.png" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
