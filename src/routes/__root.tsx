@@ -11,7 +11,7 @@ import { useEffect, type ReactNode } from "react";
 import { Toaster } from "@/components/ui/sonner";
 
 import appCss from "../styles.css?url";
-import { reportLovableError } from "../lib/lovable-error-reporting";
+import { reportError } from "../lib/error-reporting";
 
 
 function NotFoundComponent() {
@@ -40,7 +40,7 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
   console.error(error);
   const router = useRouter();
   useEffect(() => {
-    reportLovableError(error, { boundary: "tanstack_root_error_component" });
+    reportError(error, { boundary: "tanstack_root_error_component" });
   }, [error]);
 
   return (
@@ -93,8 +93,8 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: "अन्नData — Organizing India's Agricultural Future" },
       { name: "twitter:description", content: "India's premium agritech platform. Farm to Future, powered by data. Early access open for farmers, buyers, warehouses, transporters and partners." },
-      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/b5498092-bb2f-4790-9336-587ed4530643/id-preview-1b1f73b2--e1a2399d-2c3f-4c88-a0b0-2c85a231230e.lovable.app-1784816507347.png" },
-      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/b5498092-bb2f-4790-9336-587ed4530643/id-preview-1b1f73b2--e1a2399d-2c3f-4c88-a0b0-2c85a231230e.lovable.app-1784816507347.png" },
+      { property: "og:image", content: "https://anndata-agritech-hub.lovable.app/og-image.png" },
+      { name: "twitter:image", content: "https://anndata-agritech-hub.lovable.app/og-image.png" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
