@@ -1,29 +1,39 @@
-# Welcome to your Lovable project
+# अन्नData
 
-This project was built with [Lovable](https://lovable.dev).
+India's premium agritech platform — organizing the country's agricultural future.
 
-## Build with Lovable
+## What it does
 
-Open your project in the [Lovable editor](https://lovable.dev) and keep building.
+- Digital marketplace for crops (wheat, rice, cotton, tobacco, chicory, vegetables, fruits, pulses, oilseeds)
+- Direct farm-gate procurement by अन्नData
+- Agri-input store (seeds, fertiliser, pesticides, tools)
+- AI crop advisory
+- Weather forecasting and mandi price tracking
+- Warehouse and logistics booking
+- Farmer loan and government scheme guidance
+- Image-based crop disease detection
 
-- **Ship faster**: describe what you want to build and Lovable handles the code.
-- **Stay in sync**: connect the project to GitHub and every change made in Lovable is committed straight to your repository.
-- **Full ownership**: this code is yours. Push to your repository and your changes sync back into Lovable, ready for your next prompt.
+## Tech stack
+
+- TanStack Start
+- React + TypeScript
+- Tailwind CSS
+- Cloud backend (database, auth, storage)
 
 ## Development
 
-Prefer working locally? You need Node.js and npm — [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating).
-
 ```sh
-git clone <this-repository-url>
-cd <repository-name>
 npm i
 npm run dev
 ```
 
-## Built with
+## Environment variables
 
-- TanStack Start
-- TypeScript
-- React
-- Tailwind CSS
+Set these in production:
+
+- `SUPABASE_URL` — project URL
+- `SUPABASE_PUBLISHABLE_KEY` — anon/public key
+- `SUPABASE_SERVICE_ROLE_KEY` — server-only service role key
+- `AI_API_KEY` — OpenAI-compatible API key for the AI advisor
+- `AI_API_BASE_URL` — optional, defaults to `https://api.openai.com/v1`
+- `AI_MODEL` — optional, defaults to `gpt-4o-mini`
