@@ -13,6 +13,7 @@ const nav = [
   { to: "/disease", label: "Disease Scan", hindi: "निदान" },
   { to: "/warehouse", label: "Warehouse", hindi: "गोदाम" },
   { to: "/sell-to-us", label: "Sell to Us", hindi: "हमें बेचें" },
+  { to: "/export", label: "Export Desk", hindi: "निर्यात" },
   { to: "/supplies", label: "Seeds & Fertilizer", hindi: "बीज व खाद" },
   { to: "/loans", label: "Loans & Schemes", hindi: "ऋण" },
 ] as const;
