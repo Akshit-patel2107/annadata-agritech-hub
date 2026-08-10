@@ -17,6 +17,7 @@ import { Route as SellRouteImport } from './routes/sell'
 import { Route as PricesRouteImport } from './routes/prices'
 import { Route as MarketplaceRouteImport } from './routes/marketplace'
 import { Route as LoansRouteImport } from './routes/loans'
+import { Route as ExportRouteImport } from './routes/export'
 import { Route as DiseaseRouteImport } from './routes/disease'
 import { Route as DashboardRouteImport } from './routes/dashboard'
 import { Route as AuthRouteImport } from './routes/auth'
@@ -64,6 +65,11 @@ const LoansRoute = LoansRouteImport.update({
   path: '/loans',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ExportRoute = ExportRouteImport.update({
+  id: '/export',
+  path: '/export',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const DiseaseRoute = DiseaseRouteImport.update({
   id: '/disease',
   path: '/disease',
@@ -101,6 +107,7 @@ export interface FileRoutesByFullPath {
   '/auth': typeof AuthRoute
   '/dashboard': typeof DashboardRoute
   '/disease': typeof DiseaseRoute
+  '/export': typeof ExportRoute
   '/loans': typeof LoansRoute
   '/marketplace': typeof MarketplaceRouteWithChildren
   '/prices': typeof PricesRoute
@@ -117,6 +124,7 @@ export interface FileRoutesByTo {
   '/auth': typeof AuthRoute
   '/dashboard': typeof DashboardRoute
   '/disease': typeof DiseaseRoute
+  '/export': typeof ExportRoute
   '/loans': typeof LoansRoute
   '/marketplace': typeof MarketplaceRouteWithChildren
   '/prices': typeof PricesRoute
@@ -134,6 +142,7 @@ export interface FileRoutesById {
   '/auth': typeof AuthRoute
   '/dashboard': typeof DashboardRoute
   '/disease': typeof DiseaseRoute
+  '/export': typeof ExportRoute
   '/loans': typeof LoansRoute
   '/marketplace': typeof MarketplaceRouteWithChildren
   '/prices': typeof PricesRoute
@@ -152,6 +161,7 @@ export interface FileRouteTypes {
     | '/auth'
     | '/dashboard'
     | '/disease'
+    | '/export'
     | '/loans'
     | '/marketplace'
     | '/prices'
@@ -168,6 +178,7 @@ export interface FileRouteTypes {
     | '/auth'
     | '/dashboard'
     | '/disease'
+    | '/export'
     | '/loans'
     | '/marketplace'
     | '/prices'
@@ -184,6 +195,7 @@ export interface FileRouteTypes {
     | '/auth'
     | '/dashboard'
     | '/disease'
+    | '/export'
     | '/loans'
     | '/marketplace'
     | '/prices'
@@ -201,6 +213,7 @@ export interface RootRouteChildren {
   AuthRoute: typeof AuthRoute
   DashboardRoute: typeof DashboardRoute
   DiseaseRoute: typeof DiseaseRoute
+  ExportRoute: typeof ExportRoute
   LoansRoute: typeof LoansRoute
   MarketplaceRoute: typeof MarketplaceRouteWithChildren
   PricesRoute: typeof PricesRoute
@@ -269,6 +282,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LoansRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/export': {
+      id: '/export'
+      path: '/export'
+      fullPath: '/export'
+      preLoaderRoute: typeof ExportRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/disease': {
       id: '/disease'
       path: '/disease'
@@ -332,6 +352,7 @@ const rootRouteChildren: RootRouteChildren = {
   AuthRoute: AuthRoute,
   DashboardRoute: DashboardRoute,
   DiseaseRoute: DiseaseRoute,
+  ExportRoute: ExportRoute,
   LoansRoute: LoansRoute,
   MarketplaceRoute: MarketplaceRouteWithChildren,
   PricesRoute: PricesRoute,
@@ -344,13 +365,3 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}
