@@ -15,22 +15,31 @@ export type Listing = {
   image: string;
 };
 
-const img = (seed: string) =>
-  `https://images.unsplash.com/${seed}?auto=format&fit=crop&w=800&q=70`;
+import wheatImg from "@/assets/commodities/wheat.jpg";
+import basmatiImg from "@/assets/commodities/basmati-rice.jpg";
+import sonaMasuriImg from "@/assets/commodities/sona-masuri.jpg";
+import cottonImg from "@/assets/commodities/cotton.jpg";
+import turImg from "@/assets/commodities/tur-dal.jpg";
+import chanaImg from "@/assets/commodities/chana.jpg";
+import mustardImg from "@/assets/commodities/mustard.jpg";
+import onionImg from "@/assets/commodities/onion.jpg";
+import mangoImg from "@/assets/commodities/mango.jpg";
+import tobaccoImg from "@/assets/commodities/tobacco.jpg";
+import chicoryImg from "@/assets/commodities/chicory.jpg";
 
 export const listings: Listing[] = [
-  { id: "l1", commodity: "Wheat", hindi: "गेहूं", variety: "Sharbati", grade: "A", quantityQuintals: 250, pricePerQuintal: 2680, location: "Sehore", state: "MP", seller: "Ramesh Patel", sellerRating: 4.8, harvestDate: "2026-04-12", organic: false, image: img("photo-1574323347407-f5e1ad6d020b") },
-  { id: "l2", commodity: "Rice", hindi: "चावल", variety: "Basmati 1121", grade: "A", quantityQuintals: 500, pricePerQuintal: 4150, location: "Karnal", state: "HR", seller: "Harjeet Singh", sellerRating: 4.9, harvestDate: "2026-05-02", organic: true, image: img("photo-1586201375761-83865001e31c") },
-  { id: "l3", commodity: "Cotton", hindi: "कपास", variety: "Shankar-6", grade: "B", quantityQuintals: 180, pricePerQuintal: 7200, location: "Rajkot", state: "GJ", seller: "Nileshbhai Desai", sellerRating: 4.6, harvestDate: "2026-03-20", organic: false, image: img("photo-1594492789922-1116d13a7c48") },
-  { id: "l4", commodity: "Pulses", hindi: "दाल", variety: "Tur Dal", grade: "A", quantityQuintals: 90, pricePerQuintal: 9800, location: "Latur", state: "MH", seller: "Sunita Kale", sellerRating: 4.7, harvestDate: "2026-06-01", organic: true, image: img("photo-1596797038530-2c107229654b") },
-  { id: "l5", commodity: "Oilseeds", hindi: "तिलहन", variety: "Mustard", grade: "A", quantityQuintals: 320, pricePerQuintal: 5400, location: "Bharatpur", state: "RJ", seller: "Kishore Meena", sellerRating: 4.5, harvestDate: "2026-04-28", organic: false, image: img("photo-1615485500704-8e990f9900f7") },
-  { id: "l6", commodity: "Vegetables", hindi: "सब्जियां", variety: "Onion", grade: "A", quantityQuintals: 400, pricePerQuintal: 2100, location: "Nashik", state: "MH", seller: "Ganesh Shinde", sellerRating: 4.8, harvestDate: "2026-06-15", organic: false, image: img("photo-1587049352846-4a222e784d38") },
-  { id: "l7", commodity: "Fruits", hindi: "फल", variety: "Alphonso Mango", grade: "A", quantityQuintals: 60, pricePerQuintal: 18500, location: "Ratnagiri", state: "MH", seller: "Deepak Sawant", sellerRating: 4.9, harvestDate: "2026-05-20", organic: true, image: img("photo-1553279768-865429fa0078") },
-  { id: "l8", commodity: "Wheat", hindi: "गेहूं", variety: "Lokwan", grade: "B", quantityQuintals: 400, pricePerQuintal: 2450, location: "Ujjain", state: "MP", seller: "Prakash Yadav", sellerRating: 4.4, harvestDate: "2026-04-25", organic: false, image: img("photo-1535912574650-40b1e260d5df") },
-  { id: "l9", commodity: "Tobacco", hindi: "तंबाकू", variety: "FCV", grade: "A", quantityQuintals: 120, pricePerQuintal: 12500, location: "Guntur", state: "AP", seller: "Sridhar Reddy", sellerRating: 4.6, harvestDate: "2026-03-05", organic: false, image: img("photo-1591086175462-32b76e435d76") },
-  { id: "l10", commodity: "Chicory", hindi: "चिकोरी", variety: "Common", grade: "B", quantityQuintals: 45, pricePerQuintal: 8900, location: "Ahmedabad", state: "GJ", seller: "Mehulbhai Shah", sellerRating: 4.3, harvestDate: "2026-02-18", organic: true, image: img("photo-1615485290382-441e4d049cb5") },
-  { id: "l11", commodity: "Pulses", hindi: "दाल", variety: "Chana", grade: "A", quantityQuintals: 220, pricePerQuintal: 5700, location: "Bikaner", state: "RJ", seller: "Mahendra Choudhary", sellerRating: 4.7, harvestDate: "2026-04-10", organic: false, image: img("photo-1515543904379-3d757afe72e4") },
-  { id: "l12", commodity: "Rice", hindi: "चावल", variety: "Sona Masuri", grade: "B", quantityQuintals: 350, pricePerQuintal: 3100, location: "Warangal", state: "TG", seller: "Lakshmi Rao", sellerRating: 4.8, harvestDate: "2026-05-18", organic: false, image: img("photo-1568347355280-d33fdf77d42a") },
+  { id: "l1", commodity: "Wheat", hindi: "गेहूं", variety: "Sharbati", grade: "A", quantityQuintals: 250, pricePerQuintal: 3050, location: "Sehore", state: "MP", seller: "Ramesh Patel", sellerRating: 4.8, harvestDate: "2026-04-12", organic: false, image: wheatImg },
+  { id: "l2", commodity: "Rice", hindi: "चावल", variety: "Basmati 1121", grade: "A", quantityQuintals: 500, pricePerQuintal: 4200, location: "Karnal", state: "HR", seller: "Harjeet Singh", sellerRating: 4.9, harvestDate: "2026-05-02", organic: true, image: basmatiImg },
+  { id: "l3", commodity: "Cotton", hindi: "कपास", variety: "Shankar-6", grade: "B", quantityQuintals: 180, pricePerQuintal: 8860, location: "Rajkot", state: "GJ", seller: "Nileshbhai Desai", sellerRating: 4.6, harvestDate: "2026-03-20", organic: false, image: cottonImg },
+  { id: "l4", commodity: "Pulses", hindi: "दाल", variety: "Tur / Arhar", grade: "A", quantityQuintals: 90, pricePerQuintal: 7200, location: "Latur", state: "MH", seller: "Sunita Kale", sellerRating: 4.7, harvestDate: "2026-06-01", organic: true, image: turImg },
+  { id: "l5", commodity: "Oilseeds", hindi: "तिलहन", variety: "Mustard", grade: "A", quantityQuintals: 320, pricePerQuintal: 5900, location: "Bharatpur", state: "RJ", seller: "Kishore Meena", sellerRating: 4.5, harvestDate: "2026-04-28", organic: false, image: mustardImg },
+  { id: "l6", commodity: "Vegetables", hindi: "सब्जियां", variety: "Onion", grade: "A", quantityQuintals: 400, pricePerQuintal: 1850, location: "Nashik", state: "MH", seller: "Ganesh Shinde", sellerRating: 4.8, harvestDate: "2026-06-15", organic: false, image: onionImg },
+  { id: "l7", commodity: "Fruits", hindi: "फल", variety: "Alphonso Mango", grade: "A", quantityQuintals: 60, pricePerQuintal: 18500, location: "Ratnagiri", state: "MH", seller: "Deepak Sawant", sellerRating: 4.9, harvestDate: "2026-05-20", organic: true, image: mangoImg },
+  { id: "l8", commodity: "Wheat", hindi: "गेहूं", variety: "Lokwan", grade: "B", quantityQuintals: 400, pricePerQuintal: 2720, location: "Ujjain", state: "MP", seller: "Prakash Yadav", sellerRating: 4.4, harvestDate: "2026-04-25", organic: false, image: wheatImg },
+  { id: "l9", commodity: "Tobacco", hindi: "तंबाकू", variety: "FCV", grade: "A", quantityQuintals: 120, pricePerQuintal: 12500, location: "Guntur", state: "AP", seller: "Sridhar Reddy", sellerRating: 4.6, harvestDate: "2026-03-05", organic: false, image: tobaccoImg },
+  { id: "l10", commodity: "Chicory", hindi: "चिकोरी", variety: "Common", grade: "B", quantityQuintals: 45, pricePerQuintal: 8900, location: "Ahmedabad", state: "GJ", seller: "Mehulbhai Shah", sellerRating: 4.3, harvestDate: "2026-02-18", organic: true, image: chicoryImg },
+  { id: "l11", commodity: "Pulses", hindi: "दाल", variety: "Chana (Bengal Gram)", grade: "A", quantityQuintals: 220, pricePerQuintal: 5880, location: "Bikaner", state: "RJ", seller: "Mahendra Choudhary", sellerRating: 4.7, harvestDate: "2026-04-10", organic: false, image: chanaImg },
+  { id: "l12", commodity: "Rice", hindi: "चावल", variety: "Sona Masuri", grade: "B", quantityQuintals: 350, pricePerQuintal: 3300, location: "Warangal", state: "TG", seller: "Lakshmi Rao", sellerRating: 4.8, harvestDate: "2026-05-18", organic: false, image: sonaMasuriImg },
 ];
 
 export const commodities = [
