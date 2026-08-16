@@ -36,7 +36,8 @@ export const Route = createFileRoute("/marketplace/$id")({
 });
 
 function Detail() {
-  const l = Route.useLoaderData();
+  const loaded = Route.useLoaderData();
+  const l = loaded!;
   const [qty, setQty] = useState(Math.min(50, l.quantityQuintals));
   const total = qty * l.pricePerQuintal;
 
