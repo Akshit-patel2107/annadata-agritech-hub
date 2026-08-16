@@ -1,6 +1,6 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { AppShell } from "@/components/AppShell";
-import { listings, transporters } from "@/lib/mock-data";
+import { listings, transporters, type Listing } from "@/lib/mock-data";
 import { Star, MapPin, Leaf, ShieldCheck, Truck, MessageCircle, ArrowLeft, Wallet } from "lucide-react";
 import { useState } from "react";
 import { toast } from "sonner";
@@ -36,7 +36,7 @@ export const Route = createFileRoute("/marketplace/$id")({
 });
 
 function Detail() {
-  const l = Route.useLoaderData();
+  const l = Route.useLoaderData() as Listing;
   const [qty, setQty] = useState(Math.min(50, l.quantityQuintals));
   const total = qty * l.pricePerQuintal;
 
