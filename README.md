@@ -1,3 +1,4 @@
+https://anndata-agritech-hub.lovable.app
 # अन्नData
 
 India's premium agritech platform — organizing the country's agricultural future.
